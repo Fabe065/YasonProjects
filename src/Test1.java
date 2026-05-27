@@ -5,55 +5,47 @@ public class Test1 {
         // калькулятор (функции)
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("input first number");
-        double num1 = scanner.nextDouble();
+        System.out.println("input first number: ");
+        double a = scanner.nextDouble();
 
-        System.out.println("Enter action");
-        System.out.println("1 - sum (+)");
-        System.out.println("2 - dif (-)");
-        System.out.println("3 - multi (*)");
-        System.out.println("4 - div (/)");
-        System.out.print("Enter transaction number: ");
-        int operation = scanner.nextInt();
         System.out.print("Enter second number: ");
-        double num2 = scanner.nextDouble();
+        double b = scanner.nextDouble();
 
+        System.out.print("Enter third number: ");
+        double c = scanner.nextDouble();
 
-        if (operation == 1) {
-            System.out.println(sum(num1, num2));
+        double D = calculateDiscr(a, b, c);
+
+        if (a != 0) {
+            System.out.println("D=" + calculateDiscr(a, b, c));
         }
-        if (operation == 2) {
-            System.out.println(dif(num1, num2));
+        if (D > 0) {
+            System.out.println("x1= " + Root1(a, b, D));
+            System.out.println("x2= " + Root2(a, b, D));
         }
-        if (operation == 3) {
-            System.out.println(multi(num1, num2));
+        if (D == 0) {
+            System.out.println(Root1(a, b));
         }
-        if (operation == 4) {
-            System.out.println(div(num1, num2));
-            if (num2 == 0) {
-                System.out.println("Error: division by zero");
-
-            }
+        if (D < 0){
+            System.out.println("No roots");
         }
     }
 
-    static double sum(double a, double b) {
-        return a + b;
+    static double calculateDiscr(double a, double b, double c) {
+        return Math.pow(b, 2) - 4 * a * c;
     }
 
-    static double dif(double a, double b) {
-        return a - b;
+    static double Root1(double a, double b, double D) {
+        return (-b + Math.sqrt(D)) / (2 * a);
     }
 
-    static double multi(double a, double b) {
-        return a * b;
+    static double Root2(double a, double b, double D) {
+        return (-b - Math.sqrt(D)) / (2 * a);
     }
 
-    static double div(double a, double b) {
-        return a / b;
-
-
+    static double Root1(double a, double b) {
+        return -b / (2 * a);
     }
+
 }
-
 
