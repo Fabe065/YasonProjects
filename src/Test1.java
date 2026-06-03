@@ -8,23 +8,23 @@ public class Test1 {
         System.out.println("input first number: ");
         double a = scanner.nextDouble();
 
-        System.out.print("Enter second number: ");
+        System.out.println("Enter second number: ");
         double b = scanner.nextDouble();
 
-        System.out.print("Enter third number: ");
+        System.out.println("Enter third number: ");
         double c = scanner.nextDouble();
 
         double D = calculateDiscr(a, b, c);
 
         if (a != 0) {
-            System.out.println("D=" + calculateDiscr(a, b, c));
+            System.out.println("D= " + calculateDiscr(a, b, c));
         }
         if (D > 0) {
-            System.out.println("x1= " + Root1(a, b, D));
-            System.out.println("x2= " + Root2(a, b, D));
+            System.out.println("x1= " + rootOneWhenDiscrGreater(a, b, D));
+            System.out.println("x2= " + rootTwoWhenDiscrGreater(a, b, D));
         }
         if (D == 0) {
-            System.out.println(Root1(a, b));
+            System.out.println(rootWhenDiscrEqual(a, b));
         }
         if (D < 0){
             System.out.println("No roots");
@@ -35,15 +35,15 @@ public class Test1 {
         return Math.pow(b, 2) - 4 * a * c;
     }
 
-    static double Root1(double a, double b, double D) {
+    static double rootOneWhenDiscrGreater(double a, double b, double D) {
         return (-b + Math.sqrt(D)) / (2 * a);
     }
 
-    static double Root2(double a, double b, double D) {
+    static double rootTwoWhenDiscrGreater(double a, double b, double D) {
         return (-b - Math.sqrt(D)) / (2 * a);
     }
 
-    static double Root1(double a, double b) {
+    static double rootWhenDiscrEqual(double a, double b) {
         return -b / (2 * a);
     }
 
